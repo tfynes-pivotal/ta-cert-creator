@@ -1,6 +1,6 @@
 accelerator:
-  displayName: TAP Image Installer
-  description: Authors image-copy.sh scripts to pull images from Tanzunet and push them to harbor registry
+  displayName: TAP Certificate Creator
+  description: Generates the 'certbot' command to issue certificates manually via DNS TXT record challenge. 
   tags:
   - beta
 
@@ -10,7 +10,7 @@ accelerator:
     description: Accelerator generated script archive name 
     display: true
     inputType: text
-    defaultValue: tap-image-installer
+    defaultValue: certbot-command
 
   #! Question: copy direct or download first then push to harbor
   - name: copyMode
