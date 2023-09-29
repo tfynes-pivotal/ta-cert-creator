@@ -35,7 +35,7 @@ accelerator:
 engine: 
   let:
   - name: domains 
-    expression: "'harborcerts'"
+    expression: "'-d ''' + domainsToRegister'''"
 
 #! Start with global search & replace for text substitutions
 #!   Update ingress-domain, github gitops repo url, name & branch, tlsMode
@@ -56,4 +56,4 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: CERTBOT_COMMAND
-              with: "#domainsToRegister[0]"
+              with: "#domains[0]"
