@@ -62,5 +62,5 @@ engine:
             doAsChain:
               type: ReplaceText
               substitutions:
-              - text: DOMAIN#i
+              - text: DOMAIN
                 with: "'-d ''' + #m + ''' '"
