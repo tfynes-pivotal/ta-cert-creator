@@ -54,4 +54,4 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: CERTBOT_COMMAND
-              with: "'-d ''' +#domainsToRegistr[0] + ''' '"
+              with: "'-d ''' + #domainsToRegistr[0] + ''' '"
