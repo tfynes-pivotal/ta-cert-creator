@@ -33,12 +33,10 @@ accelerator:
  
 
 engine: 
-  let:
-  - name: domains 
-    expression: "'-d ''' + domainsToRegister'''"
+  #! let:
+  #! - name: domains 
+  #!   expression: "'-d ''' + domainsToRegister'''"
 
-#! Start with global search & replace for text substitutions
-#!   Update ingress-domain, github gitops repo url, name & branch, tlsMode
   chain:
   - merge:
     - include: ['**']
@@ -56,4 +54,4 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: CERTBOT_COMMAND
-              with: "#domains[0]"
+              with: "'-d ''' +#domainsToRegistr[0] + ''' '"
