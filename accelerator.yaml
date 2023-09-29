@@ -56,4 +56,4 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: CERTBOT_COMMAND
-              with: "#domainsToRegister[1]"
+              with: "#domainsToRegister[0]"
