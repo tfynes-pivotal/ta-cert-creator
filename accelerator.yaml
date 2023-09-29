@@ -25,6 +25,13 @@ accelerator:
       - text: Download to local then copy to target registry (2 scripts generated)
         value: copyIndirect
 
+  - name: domainsToRegister
+    label: Domains to Register
+    description: to registry as SAN fields in generated certificate
+    dataType: [string]
+    defaultValue: ['*.a3.fynesy.com']
+
+
   #! Question: if indirect, local folder for archive downloads from tanzunet
   - name: localFolder
     label: Local folder for Tanzunet downloads
