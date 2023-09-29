@@ -51,7 +51,16 @@ engine:
           exclude: ['*.sh']
         - include: ['*.sh']
           chain:
-          - type: ReplaceText
-            substitutions:
-            - text: CERTBOT_COMMAND
-              with: "'-d ''' + #domainsToRegister[0] + ''' '"
+          # - type: ReplaceText
+          #   substitutions:
+          #   - text: CERTBOT_COMMAND
+          #     with: "'-d ''' + #domainsToRegister[0] + ''' '"
+          - type: Loop
+            on: "#domainsToRegister"
+            var: m
+            index: i
+            doAsChain:
+              type: ReplaceText
+              substitutions:
+              - text: DOMAIN#i
+                with: "'-d ''' + #m + ''' '"
