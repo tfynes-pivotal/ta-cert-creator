@@ -53,7 +53,7 @@ engine:
           # - type: ReplaceText
           #   substitutions:
           #   - text: CERTBOT_COMMAND
-          #     with: "'-d ''' + #domainsToRegister[0] + ''' '"
+          #     with: "'-d ''' + #domainsToRegister + ''' '"
           - type: Loop
             on: "#domainsToRegister"
             var: m
