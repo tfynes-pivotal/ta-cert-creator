@@ -12,17 +12,16 @@ accelerator:
     inputType: text
     defaultValue: certbot-command
 
-  - name: commonName
-    label: Certificate common-name
-    description: Primary domain to register
+  - name: certName
+    label: Certificate Name
     dataType: string
-    defaultValue: "*.a3.fynesy.com"
+    defaultValue: "a3.fynesy.com"
 
   - name: domainsToRegister
     label: Domains to Register
     description: to registry as SAN fields in generated certificate
     dataType: [string]
-    defaultValue: ['']
+    defaultValue: ['*.a3.fynesy.com']
 
   - name: emailAddress
     label: Email address for Certbot interaction
@@ -50,7 +49,7 @@ engine:
       - type: ReplaceText
         substitutions:
         - text: CERTBOT_COMMAND
-          with: '"certbot " + " --agree-tos " + "-m " + #emailAddress + " " + " --cert-name " + " " + #commonName + "--server https://acme-v02.api.letsencrypt.org/directory " + T(String).join(" -d ", #domainsToRegister) + " " + "--config-dir ./config " + "--logs-dir   ./logs " + "--work-dir   ./work " + "--manual " + "--preferred-challenges dns "'
+          with: '"certbot " + " --agree-tos " + "-m " + #emailAddress + " " + " --cert-name " + " " + #commonName + " " + "--server https://acme-v02.api.letsencrypt.org/directory " + T(String).join(" -d ", #domainsToRegister) + " " + "--config-dir ./config " + "--logs-dir   ./logs " + "--work-dir   ./work " + "--manual " + "--preferred-challenges dns "'
       # - merge:
       #   - include: ["**"]
       #     exclude: ['*.sh']
