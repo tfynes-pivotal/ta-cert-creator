@@ -15,13 +15,13 @@ accelerator:
   - name: certName
     label: Certificate Name
     dataType: string
-    defaultValue: "a3.fynesy.com"
+    defaultValue: "a.fynesy.com"
 
   - name: domainsToRegister
     label: Domains to Register
     description: to registry as SAN fields in generated certificate
     dataType: [string]
-    defaultValue: ['*.a3.fynesy.com']
+    defaultValue: ['*.a.fynesy.com']
 
   - name: emailAddress
     label: Email address for Certbot interaction
