@@ -12,17 +12,23 @@ accelerator:
     inputType: text
     defaultValue: certbot-command
 
-  #! Question: copy direct or download first then push to harbor
-  
+  - name: commonName
+    label: Certificate common-name
+    description: Primary domain to register
+    dataType: string
+    defaultValue: "*.a3.fynesy.com"
 
   - name: domainsToRegister
     label: Domains to Register
     description: to registry as SAN fields in generated certificate
     dataType: [string]
-    defaultValue: ['*.a3.fynesy.com']
+    defaultValue: ['']
 
+  - name: emailAddress
+    label: Email address for Certbot interaction
+    dataType: string
+    defaultValue: "a@b.com"
 
-  #! QuesD
 
 
 
@@ -44,17 +50,7 @@ engine:
       - type: ReplaceText
         substitutions:
         - text: CERTBOT_COMMAND
-          with: |
-            '"certbot " + \
-            " --agree-tos " + 
-            " --cert-name TEST " + 
-            "--server https://acme-v02.api.letsencrypt.org/directory " + 
-            T(String).join(" -d ", #domainsToRegister) + " " + 
-            "--config-dir ./config " +  
-            "--logs-dir   ./logs " + 
-            "--work-dir   ./work " +  
-            "--manual " + 
-            "--preferred-challenges dns "'
+          with: '"certbot " + " --agree-tos " + "-m " + #emailAddress + " " + " --cert-name " + " " + commonName + "--server https://acme-v02.api.letsencrypt.org/directory " + T(String).join(" -d ", #domainsToRegister) + " " + "--config-dir ./config " + "--logs-dir   ./logs " + "--work-dir   ./work " + "--manual " + "--preferred-challenges dns "'
       # - merge:
       #   - include: ["**"]
       #     exclude: ['*.sh']
