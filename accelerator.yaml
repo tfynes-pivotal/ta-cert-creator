@@ -43,9 +43,8 @@ engine:
       chain:
       - type: ReplaceText
         substitutions:
-        - text: HARBOR_FQDN
-          with: "'harborFqdn'"
-        
+        - text: CERTBOT_COMMAND
+          with: '"certbot " + T(String.join(" -d ", #domainsToRegister) + " -m xxx"' 
       - merge:
         - include: ["**"]
           exclude: ['*.sh']
