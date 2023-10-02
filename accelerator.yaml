@@ -44,22 +44,22 @@ engine:
       - type: ReplaceText
         substitutions:
         - text: CERTBOT_COMMAND
-          with: '"certbot " + T(String.join(" -d ", #domainsToRegister) + " -m xxx"' 
-      - merge:
-        - include: ["**"]
-          exclude: ['*.sh']
-        - include: ['*.sh']
-          chain:
+          with: '"certbot " + T(String).join(" -d ", #domainsToRegister) + " -m xxx"' 
+      # - merge:
+      #   - include: ["**"]
+      #     exclude: ['*.sh']
+      #   - include: ['*.sh']
+      #     chain:
           # - type: ReplaceText
           #   substitutions:
           #   - text: CERTBOT_COMMAND
           #     with: "'-d ''' + #domainsToRegister + ''' '"
-          - type: Loop
-            on: "#domainsToRegister"
-            var: m
-            index: i
-            doAsChain:
-              type: ReplaceText
-              substitutions:
-              - text: DOMAIN
-                with: "'-d ''' + #m + ''' '"
+          # - type: Loop
+          #   on: "#domainsToRegister"
+          #   var: m
+          #   index: i
+          #   doAsChain:
+          #     type: ReplaceText
+          #     substitutions:
+          #     - text: DOMAIN
+          #       with: "'-d ''' + #m + ''' '"
