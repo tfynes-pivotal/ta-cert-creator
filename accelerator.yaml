@@ -12,6 +12,14 @@ accelerator:
     inputType: text
     defaultValue: certbot-command
 
+  - name: certName
+    label: Certificate Name
+    description: Common Name field of generated certificate
+    display: true
+    inputType: text
+    defaultValue: certbot-command
+
+
   - name: domainsToRegister
     label: Domains to Register
     description: to registry as SAN fields in generated certificate
@@ -44,7 +52,7 @@ engine:
       - type: ReplaceText
         substitutions:
         - text: CERTBOT_COMMAND
-          with: '"certbot certonly" + " --agree-tos " + "-m " + #emailAddress + " " + " --cert-name " + " " + #domainsToRegister[0] + " " + "--server https://acme-v02.api.letsencrypt.org/directory " + "-d " +  T(String).join(" -d ", #domainsToRegister) + " " + "--config-dir ./config " + "--logs-dir   ./logs " + "--work-dir   ./work " + "--manual " + "--preferred-challenges dns "'
+          with: '"certbot certonly" + " --agree-tos " + "-m " + #emailAddress + " " + " --cert-name " + " " + #certName + " " + "--server https://acme-v02.api.letsencrypt.org/directory " + "-d " +  T(String).join(" -d ", #domainsToRegister) + " " + "--config-dir ./config " + "--logs-dir   ./logs " + "--work-dir   ./work " + "--manual " + "--preferred-challenges dns "'
 
       # - merge:
       #   - include: ["**"]
