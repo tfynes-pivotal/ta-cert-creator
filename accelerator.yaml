@@ -17,8 +17,7 @@ accelerator:
     description: Common Name field of generated certificate
     display: true
     inputType: text
-    defaultValue: certbot-command
-
+    defaultValue: a.fynesy.com
 
   - name: domainsToRegister
     label: Domains to Register
