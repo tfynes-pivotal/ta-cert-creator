@@ -55,7 +55,7 @@ engine:
       - type: ReplaceText
         substitutions:
         - text: CERTBOT_COMMAND
-          with: '"certbot certonly" + " --agree-tos " + "-m " + #emailAddress + " " + " --cert-name " + " " + #certName + " " + "--server https://acme-v02.api.letsencrypt.org/directory " + "-d " +  T(String).join(" -d ", #domainsToRegister) + " " + "--config-dir ./config " + "--logs-dir   ./logs " + "--work-dir   ./work " + "--manual " + "--preferred-challenges dns "'
+          with: '"certbot certonly" + " --agree-tos " + "-m " + #emailAddress + " " + " --cert-name " + " " + #certName + " " + "--server https://acme-v02.api.letsencrypt.org/directory " + "-d """ +  T(String).join(" -d ", #domainsToRegister) + """ " + "--config-dir ./config " + "--logs-dir   ./logs " + "--work-dir   ./work " + "--manual " + "--preferred-challenges dns "'
        #! with: '"certbot certonly" + " --agree-tos " + "-m " + #emailAddress + " " + " --cert-name " + " " + #certName + " " + "--server https://acme-v02.api.letsencrypt.org/directory " + "-d " +  T(String).join(" -d ", #domainsToRegister) + " " + "--config-dir ./config " + "--logs-dir   ./logs " + "--work-dir   ./work " + "--manual " + "--preferred-challenges dns "'
 
       # - merge:
